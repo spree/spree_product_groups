@@ -21,6 +21,14 @@ module Spree
           @properties[name]
         end
 
+        def inspect
+          @properties.inspect
+        end
+
+        def to_s
+          @properties.to_s
+        end
+
         protected
           def get_base_scope
             base_scope = @cached_product_group ? @cached_product_group.products.active : Spree::Product.active
