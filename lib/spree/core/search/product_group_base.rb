@@ -3,6 +3,7 @@ module Spree
     module Search
       class ProductGroupBase
         attr_accessor :properties
+        attr_accessor :current_user
 
         def initialize(params)
           @properties = {}
@@ -19,6 +20,14 @@ module Spree
 
         def method_missing(name)
           @properties[name]
+        end
+
+        def inspect
+          @properties.inspect
+        end
+
+        def to_s
+          @properties.to_s
         end
 
         protected
