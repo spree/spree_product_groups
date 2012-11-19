@@ -1,7 +1,7 @@
 module Spree
   class Promotion
     module Rules
-      class Product < PromotionRule
+      class Product.class_eval do
         belongs_to :product_group
 
         def eligible_products
