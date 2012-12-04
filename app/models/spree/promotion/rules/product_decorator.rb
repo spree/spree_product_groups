@@ -1,10 +1,10 @@
 Spree::Promotion::Rules::Product.class_eval do
   belongs_to :product_group
-  attr_accessible :products_source, :product_group_id
-
+  preference :products_source, :string, :default => 'manual'
+  attr_accessible :preferred_products_source, :product_group_id
 
   def eligible_products
-    product_group ? product_group.products : products
+    (preferred_products_source == 'group' && product_group) ? product_group.products : products
   end
 
   def products_source=(source)
