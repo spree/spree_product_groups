@@ -146,7 +146,7 @@ module Spree
 
     def include?(product)
       res = apply_on(Product.where(:id => product.id), false)
-      res.count > 0
+      res.length > 0
     end
 
     def scopes_to_hash
