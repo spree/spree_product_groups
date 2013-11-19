@@ -1,25 +1,25 @@
 <%= render :partial => 'spree/admin/shared/product_sub_menu' %>
 
-<h1><%= t(:editing_product_group) %></h1>
+<h1><%= Spree.t(:editing_product_group) %></h1>
 
 <fieldset id="product_group_forms_container" data-hook>
 
   <%= form_for [:admin, @product_group], :html => { :id => 'product-group-form', :method => :put } do |f| %>
 
       <%= f.field_container :name do %>
-        <%= f.label :name, t(:name) %><br />
+        <%= f.label :name, Spree::ProductGroup.human_attribute_name(:name) %><br />
         <%= f.text_field :name %>
         <%= f.error_message_on :name %>
       <% end %>
 
       <%= f.field_container :permalink do %>
-        <%= f.label :permalink, t(:permalink) %><br />
+        <%= f.label :permalink, Spree::ProductGroup.human_attribute_name(:permalink) %><br />
         <%= f.text_field :permalink %>
         <%= f.error_message_on :permalink %>
       <% end %>
 
       <%= f.field_container :order_scope do %>
-        <%= f.label :order_scope, t(:sort_ordering) %><br />
+        <%= f.label :order_scope, Spree::ProductGroup.human_attribute_name(:sort_ordering) %><br />
         <%= f.select(:order_scope, Spree::Product.simple_scopes.collect{|p| [ t(:name, :scope =>[:product_scopes, :scopes, p]), p.to_s ] }) %>
       <% end %>
 
@@ -27,7 +27,7 @@
         <%= render :partial => 'product_scope', :collection => @product_group.product_scopes.reject {|s| s.is_ordering? } %>
       </table>
 
-    <%= button t(:update) %>
+    <%= button Spree.t(:update) %>
 
   <% end %>
 
@@ -46,9 +46,9 @@
     )
     %>
     <p>
-      <%= label_tag :product_scope_name, t(:add_scope) %>
+      <%= label_tag :product_scope_name, Spree.t(:add_scope) %>
       <%= select_tag 'product_scope[name]', options %>
-      <%= submit_tag t(:add) %>
+      <%= submit_tag Spree.t(:add) %>
     </p>
   <% end %>
 
