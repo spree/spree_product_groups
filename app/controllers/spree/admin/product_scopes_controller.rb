@@ -37,7 +37,7 @@ module Spree
       private
 
       def product_scope_params
-        params.require(:product_scope).permit(:name)
+        params.require(:product_scope).permit!
       end
 
     end
